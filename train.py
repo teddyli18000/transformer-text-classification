@@ -75,6 +75,9 @@ def train():
         val_acc = evaluate(model, val_loader, device)
 
         print(f"Epoch [{epoch + 1}/{EPOCHS}]  Loss: {avg_loss:.4f}  Val Acc: {val_acc:.2f}%")
+        # 在 train.py 的 train() 函数末尾添加：
+        torch.save(model.state_dict(), "transformer_model.pth")
+        print("模型已保存为 transformer_model.pth")
 
 
 def evaluate(model, loader, device):
