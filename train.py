@@ -11,13 +11,13 @@ from model.classifier import TransformerClassifier
 # ============================
 BATCH_SIZE = 32
 LEARNING_RATE = 0.001
-EPOCHS = 10
+EPOCHS = 30
 D_MODEL = 64  # Embedding dimension
 NUM_HEADS = 2  # Number of attention heads
 NUM_LAYERS = 2  # Number of encoder layers
 D_FF = 256  # Feed-forward hidden dimension
 SEQ_LEN = 15  # Length of sentences
-NUM_SAMPLES = 2000  # Size of dataset
+NUM_SAMPLES = 5000  # Size of dataset
 
 
 def train():
@@ -74,7 +74,7 @@ def train():
         # Validation
         val_acc = evaluate(model, val_loader, device)
 
-        print(f"Epoch [{epoch + 1}/{EPOCHS}]  Loss: {avg_loss:.4f}  Val Acc: {val_acc:.2f}%")
+        print(f"Epoch [{epoch + 1}/{EPOCHS}]  Loss: {avg_loss:.8f}  Val Acc: {val_acc:.2f}%")
         # 在 train.py 的 train() 函数末尾添加：
         torch.save(model.state_dict(), "transformer_model.pth")
         print("模型已保存为 transformer_model.pth")

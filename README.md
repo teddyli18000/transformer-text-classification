@@ -36,11 +36,15 @@ Linear Classifier (Logits)
 
 v1.0 Architecture
 
+
 v2.0 save pth & add interactive feature
+
 
 v3.0 add evaluate reporter
 
-### 2. aaa
+v3.1 - fix: add "UNK" & "not" judgement
+
+### 2. detail
 
 
 ---
