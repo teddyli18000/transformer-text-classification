@@ -10,9 +10,16 @@ def predict_sentiment(text, model, dataset, device):
     # 我们将句子拆分，并转为小写。不在词表里的词我们会忽略或用 <PAD> 代替
     words = text.lower().split()
     tokens = []
+    debug_tokens = []  # 用于调试
+
     for word in words:
         if word in dataset.vocab:
             tokens.append(dataset.vocab[word])
+            debug_tokens.append(word)
+        else:
+            tokens.append(dataset.vocab["<UNK>"])
+            debug_tokens.append(f"<UNK>({word})")
+    print(f"  [DEBUG] 模型识别到的有效词: {debug_tokens}")
 
     # 2. 截断或填充到训练时的 SEQ_LEN (15)
     seq_len = 15
